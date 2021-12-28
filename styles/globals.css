@@ -14,3 +14,32 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.liga-nav{
+  background-color: #6dff8d34;
+}
+
+.head2head{
+  background-color: #56ce7034;
+}
+
+.tablaCompeticiones {
+  border-radius: 2rem;
+}
+
+.tablaHead {
+  background-color:#208454;
+  border-radius: 2rem;
+}
+
+.team_auxiliar:hover{
+  cursor: pointer;
+  color: red;
+  font-weight:  bold;
+}
+
+.compt_auxiliar:hover{
+  cursor: pointer;
+  color: #000;
+  font-weight:  bold;
+}
