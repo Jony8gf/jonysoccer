@@ -114,7 +114,7 @@ export default function Home({ matches }) {
         {/* Partidos del Dia */}
         {match.map(match =>
           <div key={match.id}>
-            <div className="container mb-3">
+            <div className="container mb-3 card">
               <div className="row shadow rounded">
                 <div className="col-12 d-flex justify-content-center p-2 m-0 liga-nav">
                   <Link className="nav-link text-decoration-none text-dark " href={`/clasificaciones/${match.competition.id}`}>
