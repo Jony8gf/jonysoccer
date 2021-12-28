@@ -180,7 +180,7 @@ export const getStaticProps = async () => {
   })
 
   const json = await response.json()
-  console.log(json)
+  // console.log(json)
   //setMatches(json['matches'])
 
   return {

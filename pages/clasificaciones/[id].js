@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const Clasification = ({ cl }) => {
-    console.log(cl)
+    // console.log(cl)
     return (
         <div className="container my-5">
             <nav className="navbar navbar-expand-lg navbar-success bg-success rounded">

@@ -261,7 +261,7 @@ export const getServerSideProps = async ({ params }) => {
     })
 
     const jsonMatches = await responseMatches.json()
-    console.log(jsonMatches)
+    // console.log(jsonMatches)
     const jsonPreviewMatches = jsonMatches.matches.filter(x => x.status === 'FINISHED')
     const jsonNextMatches = jsonMatches.matches.filter(x => x.status === 'SCHEDULED')
     return { props: { team: jsonTeam, previewMatches: jsonPreviewMatches, nextMatches: jsonNextMatches } }

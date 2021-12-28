@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const Player = ({ ply }) => {
-    console.log(ply)
+    // console.log(ply)
 
     const calcularEdad = (fechaNacimiento) => {
 
