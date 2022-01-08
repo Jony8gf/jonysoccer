@@ -1,253 +1,260 @@
 import { useState, useEffect } from "react";
 import Image from 'next/image'
 import Link from 'next/link'
+import Head from 'next/head'
 
 const Clasification = ({ cl }) => {
     // console.log(cl)
     return (
-        <div className="container my-5">
-            <nav className="navbar navbar-expand-lg navbar-success bg-success rounded">
-                <div className="container-fluid justify-content-center ">
-                    <Link href="/" className="text-decoration-none ">
-                        <h3 className="text-white mx-3">Soccer Today</h3>
-                    </Link>
 
-                </div>
-            </nav>
-            <div className="container my-3">
-                <div className="container mb-2 rounded">
-                    <div className="row shadow-lg">
+        <>
+            <Head>
+                <title>JonySoccer</title>
+            </Head>
+            <div className="container my-5">
+                <nav className="navbar navbar-expand-lg navbar-success bg-success rounded">
+                    <div className="container-fluid justify-content-center ">
+                        <Link href="/" className="text-decoration-none ">
+                            <h3 className="text-white mx-3">Soccer Today</h3>
+                        </Link>
 
-                        {cl.standings.length > 1  ?
+                    </div>
+                </nav>
+                <div className="container my-3">
+                    <div className="container mb-2 rounded">
+                        <div className="row shadow-lg">
 
-                            cl.standings.map(comp =>
+                            {cl.standings.length > 1 ?
 
-                                comp.table.length > 1 ?
+                                cl.standings.map(comp =>
 
+                                    comp.table.length > 1 ?
 
-                                <div className="col" key={comp.group}>
-                                    <h5>{comp.group}</h5>
-                                    <table className="rounded my-3">
 
-                                        <thead className="rounded tablaHead">
-                                            <tr className="text-white" >
-                                                <td>POS</td>
-                                                <td></td>
-                                                <td>EQUIPO</td>
-                                                <td>PJ</td>
-                                                <td>PG</td>
-                                                <td>PE</td>
-                                                <td>PD</td>
-                                                <td>GF</td>
-                                                <td>GC</td>
-                                                <td>GD</td>
-                                                <td>PTS</td>
-                                            </tr>
-                                        </thead>
+                                        <div className="col" key={comp.group}>
+                                            <h5>{comp.group}</h5>
+                                            <table className="rounded my-3">
 
-                                        <tbody className="rounded">
+                                                <thead className="rounded tablaHead">
+                                                    <tr className="text-white" >
+                                                        <td>POS</td>
+                                                        <td></td>
+                                                        <td>EQUIPO</td>
+                                                        <td>PJ</td>
+                                                        <td>PG</td>
+                                                        <td>PE</td>
+                                                        <td>PD</td>
+                                                        <td>GF</td>
+                                                        <td>GC</td>
+                                                        <td>GD</td>
+                                                        <td>PTS</td>
+                                                    </tr>
+                                                </thead>
 
+                                                <tbody className="rounded">
 
-                                            {comp.table.map(x =>
 
-                                                <tr key={x.team.name}>
-                                                    {/* POSICION */}
-                                                    <td>
+                                                    {comp.table.map(x =>
 
-                                                        <b>{x.position}</b>
+                                                        <tr key={x.team.name}>
+                                                            {/* POSICION */}
+                                                            <td>
 
-                                                    </td>
+                                                                <b>{x.position}</b>
 
-                                                    {/* IMAGEN EQUIPO */}
-                                                    <td>
-                                                        <Link href={`/team/${x.team.id}`}>
-                                                            <img src={x.team.crestUrl} alt="" height="30px" width="30px" />
-                                                        </Link>
-                                                    </td>
+                                                            </td>
 
-                                                    {/* NOMBRE EQUIPO */}
-                                                    <td>
-                                                        <Link href={`/team/${x.team.id}`}>
-                                                            <p className="team_auxiliar">{x.team.name}</p>
-                                                        </Link>
-                                                    </td>
+                                                            {/* IMAGEN EQUIPO */}
+                                                            <td>
+                                                                <Link href={`/team/${x.team.id}`}>
+                                                                    <img src={x.team.crestUrl} alt="" height="30px" width="30px" />
+                                                                </Link>
+                                                            </td>
 
-                                                    {/* PARTIDO JUGADOS */}
-                                                    <td>
+                                                            {/* NOMBRE EQUIPO */}
+                                                            <td>
+                                                                <Link href={`/team/${x.team.id}`}>
+                                                                    <p className="team_auxiliar">{x.team.name}</p>
+                                                                </Link>
+                                                            </td>
 
-                                                        {x.playedGames}
+                                                            {/* PARTIDO JUGADOS */}
+                                                            <td>
 
-                                                    </td>
+                                                                {x.playedGames}
 
-                                                    {/* PARTIDO GANADOS */}
-                                                    <td>
+                                                            </td>
 
-                                                        {x.won}
+                                                            {/* PARTIDO GANADOS */}
+                                                            <td>
 
-                                                    </td>
+                                                                {x.won}
 
-                                                    {/* PARTIDO EMPATADOS */}
-                                                    <td>
+                                                            </td>
 
-                                                        {x.draw}
+                                                            {/* PARTIDO EMPATADOS */}
+                                                            <td>
 
-                                                    </td>
+                                                                {x.draw}
 
-                                                    {/* PARTIDO PERDIDOS */}
-                                                    <td>
+                                                            </td>
 
-                                                        {x.lost}
+                                                            {/* PARTIDO PERDIDOS */}
+                                                            <td>
 
-                                                    </td>
+                                                                {x.lost}
 
-                                                    {/* GOLES A FAVOR */}
-                                                    <td>
+                                                            </td>
 
-                                                        {x.goalsFor}
+                                                            {/* GOLES A FAVOR */}
+                                                            <td>
 
-                                                    </td>
+                                                                {x.goalsFor}
 
-                                                    {/* GOLES EN CONTRA */}
-                                                    <td>
+                                                            </td>
 
-                                                        {x.goalsAgainst}
+                                                            {/* GOLES EN CONTRA */}
+                                                            <td>
 
-                                                    </td>
+                                                                {x.goalsAgainst}
 
-                                                    {/* GOLES DIFERENCIA*/}
-                                                    <td>
+                                                            </td>
 
-                                                        {x.goalDifference}
+                                                            {/* GOLES DIFERENCIA*/}
+                                                            <td>
 
-                                                    </td>
+                                                                {x.goalDifference}
 
-                                                    {/* PUNTOS */}
-                                                    <td>
+                                                            </td>
 
-                                                        <b>{x.points}</b>
+                                                            {/* PUNTOS */}
+                                                            <td>
 
-                                                    </td>
+                                                                <b>{x.points}</b>
 
-                                                </tr>
+                                                            </td>
 
+                                                        </tr>
 
-                                            )}
 
+                                                    )}
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                            : <p  key={comp.group + "-" + comp.stage}></p>)
 
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        : <p key={comp.group + "-" + comp.stage}></p>)
 
-                            : <table className="rounded">
 
-                                <thead className="rounded tablaHead">
-                                    <tr className="text-white" >
-                                        <td>POS</td>
-                                        <td></td>
-                                        <td>EQUIPO</td>
-                                        <td>PJ</td>
-                                        <td>PG</td>
-                                        <td>PE</td>
-                                        <td>PD</td>
-                                        <td>GF</td>
-                                        <td>GC</td>
-                                        <td>GD</td>
-                                        <td>PTS</td>
-                                    </tr>
-                                </thead>
-                                <tbody className="rounded">
-                                    {cl.standings[0].table.map(comp =>
-                                        <tr key={comp.team.id}>
-                                            {/* POSICION */}
-                                            <td>
+                                : <table className="rounded">
 
-                                                <b>{comp.position}</b>
-
-                                            </td>
-
-                                            {/* IMAGEN EQUIPO */}
-                                            <td>
-                                                <Link  href={`/team/${comp.team.id}`}>
-                                                    <img src={comp.team.crestUrl} alt="" height="30px" width="30px" />
-                                                </Link>
-                                            </td>
-
-                                            {/* NOMBRE EQUIPO */}
-                                            <td>
-                                                <Link href={`/team/${comp.team.id}`}>
-                                                    <b>{comp.team.name}</b>
-                                                </Link>
-
-                                            </td>
-
-                                            {/* PARTIDO JUGADOS */}
-                                            <td>
-
-                                                {comp.playedGames}
-
-                                            </td>
-
-                                            {/* PARTIDO GANADOS */}
-                                            <td>
-
-                                                {comp.won}
-
-                                            </td>
-
-                                            {/* PARTIDO EMPATADOS */}
-                                            <td>
-
-                                                {comp.draw}
-
-                                            </td>
-
-                                            {/* PARTIDO PERDIDOS */}
-                                            <td>
-
-                                                {comp.lost}
-
-                                            </td>
-
-                                            {/* GOLES A FAVOR */}
-                                            <td>
-
-                                                {comp.goalsFor}
-
-                                            </td>
-
-                                            {/* GOLES EN CONTRA */}
-                                            <td>
-
-                                                {comp.goalsAgainst}
-
-                                            </td>
-
-                                            {/* GOLES DIFERENCIA*/}
-                                            <td>
-
-                                                {comp.goalDifference}
-
-                                            </td>
-
-                                            {/* PUNTOS */}
-                                            <td>
-
-                                                <b>{comp.points}</b>
-
-                                            </td>
-
+                                    <thead className="rounded tablaHead">
+                                        <tr className="text-white" >
+                                            <td>POS</td>
+                                            <td></td>
+                                            <td>EQUIPO</td>
+                                            <td>PJ</td>
+                                            <td>PG</td>
+                                            <td>PE</td>
+                                            <td>PD</td>
+                                            <td>GF</td>
+                                            <td>GC</td>
+                                            <td>GD</td>
+                                            <td>PTS</td>
                                         </tr>
-                                    )}
-                                </tbody>
+                                    </thead>
+                                    <tbody className="rounded">
+                                        {cl.standings[0].table.map(comp =>
+                                            <tr key={comp.team.id}>
+                                                {/* POSICION */}
+                                                <td>
 
-                            </table>}
+                                                    <b>{comp.position}</b>
 
+                                                </td>
+
+                                                {/* IMAGEN EQUIPO */}
+                                                <td>
+                                                    <Link href={`/team/${comp.team.id}`}>
+                                                        <img src={comp.team.crestUrl} alt="" height="30px" width="30px" />
+                                                    </Link>
+                                                </td>
+
+                                                {/* NOMBRE EQUIPO */}
+                                                <td>
+                                                    <Link href={`/team/${comp.team.id}`}>
+                                                        <b>{comp.team.name}</b>
+                                                    </Link>
+
+                                                </td>
+
+                                                {/* PARTIDO JUGADOS */}
+                                                <td>
+
+                                                    {comp.playedGames}
+
+                                                </td>
+
+                                                {/* PARTIDO GANADOS */}
+                                                <td>
+
+                                                    {comp.won}
+
+                                                </td>
+
+                                                {/* PARTIDO EMPATADOS */}
+                                                <td>
+
+                                                    {comp.draw}
+
+                                                </td>
+
+                                                {/* PARTIDO PERDIDOS */}
+                                                <td>
+
+                                                    {comp.lost}
+
+                                                </td>
+
+                                                {/* GOLES A FAVOR */}
+                                                <td>
+
+                                                    {comp.goalsFor}
+
+                                                </td>
+
+                                                {/* GOLES EN CONTRA */}
+                                                <td>
+
+                                                    {comp.goalsAgainst}
+
+                                                </td>
+
+                                                {/* GOLES DIFERENCIA*/}
+                                                <td>
+
+                                                    {comp.goalDifference}
+
+                                                </td>
+
+                                                {/* PUNTOS */}
+                                                <td>
+
+                                                    <b>{comp.points}</b>
+
+                                                </td>
+
+                                            </tr>
+                                        )}
+                                    </tbody>
+
+                                </table>}
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

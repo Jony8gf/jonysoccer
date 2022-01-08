@@ -70,102 +70,109 @@ export default function Home({ matches }) {
 
   return (
 
-    <div className="container my-2">
-      <nav className="navbar navbar-expand-lg navbar-success bg-success rounded">
-        <div className="container-fluid justify-content-center ">
-          <Link href="/" className="text-decoration-none ">
-            <h3 className="text-white mx-3">Soccer Today</h3>
-          </Link>
+    <>
+      <Head>
+        <title>JonySoccer</title>
+      </Head>
 
-        </div>
-      </nav>
+      <div className="container my-2">
+        <nav className="navbar navbar-expand-lg navbar-success bg-success rounded">
+          <div className="container-fluid justify-content-center ">
+            <Link href="/" className="text-decoration-none ">
+              <h3 className="text-white mx-3">Soccer Today</h3>
+            </Link>
+
+          </div>
+        </nav>
 
 
-      <div className="container my-4">
+        <div className="container my-4">
 
-        <div className="container my-3 rounded">
-          <div className="row shadow-lg rounded">
+          <div className="container my-3 rounded">
+            <div className="row shadow-lg rounded">
 
-            {/* Restar Dia Botton */}
-            <div className="col-4 d-flex justify-content-end">
-              <button className="btn btn-success" onClick={restarDia}> &lt; </button>
-            </div>
+              {/* Restar Dia Botton */}
+              <div className="col-4 d-flex justify-content-end">
+                <button className="btn btn-success" onClick={restarDia}> &lt; </button>
+              </div>
 
-            {/* DataPicker (Today) */}
-            <div className="col-4 d-flex justify-content-center flex-column">
-              <DatePicker id="datePicker"
-                className="form-control text-center"
-                selected={startDate}
-                onChange={date => setStartDate(date)}
-                onCalendarClose={cambiarFecha}
-                dateFormat="yyyy-MM-dd"
-              />
+              {/* DataPicker (Today) */}
+              <div className="col-4 d-flex justify-content-center flex-column">
+                <DatePicker id="datePicker"
+                  className="form-control text-center"
+                  selected={startDate}
+                  onChange={date => setStartDate(date)}
+                  onCalendarClose={cambiarFecha}
+                  dateFormat="yyyy-MM-dd"
+                />
 
-            </div>
+              </div>
 
-            {/* Sumar Dia Botton */}
-            <div className="col-4 d-flex justify-content-start">
-              <button className="btn btn-success" onClick={sumarDia}>  &gt; </button>
+              {/* Sumar Dia Botton */}
+              <div className="col-4 d-flex justify-content-start">
+                <button className="btn btn-success" onClick={sumarDia}>  &gt; </button>
+              </div>
             </div>
           </div>
-        </div>
 
 
-        {/* Partidos del Dia */}
-        {match.map(match =>
-          <div key={match.id}>
-            <div className="container mb-3 card">
-              <div className="row shadow rounded">
-                <div className="col-12 d-flex justify-content-center p-2 m-0 liga-nav">
-                  <Link className="nav-link text-decoration-none text-dark " href={`/clasificaciones/${match.competition.id}`}>
-                    <p className='compt_auxiliar'>{match.competition.name}</p>
-                  </Link>
-                  <img className="rounded-circle mx-2" src={match.competition.area.ensignUrl} alt="" height="30px" width="30px" />
-                </div>
-                <div className="col-5 d-flex justify-content-end p-4 mb-2">
-
-                  <span className="mx-2">
-                    <Link key={match.homeTeam.id} href={`/team/${match.homeTeam.id}`}>
-                      <p className='team_auxiliar'>{match.homeTeam.name}</p>
+          {/* Partidos del Dia */}
+          {match.map(match =>
+            <div key={match.id}>
+              <div className="container mb-3 card">
+                <div className="row shadow rounded">
+                  <div className="col-12 d-flex justify-content-center p-2 m-0 liga-nav">
+                    <Link className="nav-link text-decoration-none text-dark " href={`/clasificaciones/${match.competition.id}`}>
+                      <p className='compt_auxiliar'>{match.competition.name}</p>
                     </Link>
+                    <img className="rounded-circle mx-2" src={match.competition.area.ensignUrl} alt="" height="30px" width="30px" />
+                  </div>
+                  <div className="col-5 d-flex justify-content-end p-4 mb-2">
 
-                  </span>
-                </div>
-                <div className="col-2 d-flex justify-content-center p-4 mb-2">
-                  {match.score.fullTime.homeTeam != null ?
-                    <span> {match.score.fullTime.homeTeam} &#45; {match.score.fullTime.awayTeam} </span> :
-                    <span>
-                      {match.utcDate.slice(11, -4)}
-                    </span>}
+                    <span className="mx-2">
+                      <Link key={match.homeTeam.id} href={`/team/${match.homeTeam.id}`}>
+                        <p className='team_auxiliar'>{match.homeTeam.name}</p>
+                      </Link>
 
-                </div>
-                <div className="col-5 d-flex justify-content-start p-4 mb-2">
-                  <span className="mx-2">
-                    <Link key={match.awayTeam.id} href={`/team/${match.awayTeam.id}`}>
-                      <p className='team_auxiliar'>{match.awayTeam.name}</p>
-                    </Link>
-                  </span>
-                </div>
+                    </span>
+                  </div>
+                  <div className="col-2 d-flex justify-content-center p-4 mb-2">
+                    {match.score.fullTime.homeTeam != null ?
+                      <span> {match.score.fullTime.homeTeam} &#45; {match.score.fullTime.awayTeam} </span> :
+                      <span>
+                        {match.utcDate.slice(11, -4)}
+                      </span>}
 
-                <div className="col-12 rounded d-grid gap-2 mb-2">
-                  {/* <NavLink  className="btn btn btn-outline-success mb-2" to={{
+                  </div>
+                  <div className="col-5 d-flex justify-content-start p-4 mb-2">
+                    <span className="mx-2">
+                      <Link key={match.awayTeam.id} href={`/team/${match.awayTeam.id}`}>
+                        <p className='team_auxiliar'>{match.awayTeam.name}</p>
+                      </Link>
+                    </span>
+                  </div>
+
+                  <div className="col-12 rounded d-grid gap-2 mb-2">
+                    {/* <NavLink  className="btn btn btn-outline-success mb-2" to={{
                                                                 pathname: '/match',
                                                                 state: { id: match.id }
                                                                 }}>Ir al partido</NavLink> */}
-                  <Link key={match.id} href={`/match/${match.id}`}>
+                    <Link key={match.id} href={`/match/${match.id}`}>
                       <button className='btn btn btn-outline-success mb-2'>Ir al partido</button>
-                  </Link>
+                    </Link>
+                  </div>
+
                 </div>
-
               </div>
-            </div>
 
-          </div>
-        )}
+            </div>
+          )}
+
+        </div>
 
       </div>
+    </>
 
-    </div>
   )
 }
 
